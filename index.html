@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aerospace Engineering Portfolio | Virginia Tech</title>
+  <meta
+    name="description"
+    content="A creative aerospace engineering portfolio featuring ionic wind propulsion, STIHL 4-in-1 design, AutoCAD technical drafting, Surface Pen automation, CAD, Python, MATLAB, Mathematica, and prototyping work."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css?v=20260520-project-additions" />
+</head>
+<body>
+  <div class="cursor-light" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Go to home">
+      <span class="brand-mark">VT</span>
+      <span class="brand-text">Aerospace Portfolio</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="#work">Work</a>
+      <a href="#workflow">Workflow</a>
+      <a href="#contact">Contact</a>
+      <a href="Sophmore Resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="hero section-shell">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Virginia Tech Aerospace Engineer</p>
+        <h1>
+          Turning <span class="accent-text">complex problems</span> into hardware,
+          airflow, and code.
+        </h1>
+        <p class="hero-text">
+          I build across the physical and digital sides of engineering: an ionic wind thruster
+          that turns Physics II concepts into measurable airflow, a STIHL 4-in-1 mechanical
+          concept, Hess truck AutoCAD documentation, and a Surface Pen paste workflow that turns
+          a missing Windows feature into a useful tool.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="#work">View Projects</a>
+          <a class="btn ghost" href="Sophmore Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a class="btn ghost" href="#contact">Start a Conversation</a>
+        </div>
+      </div>
+
+      <div class="hero-visual reveal" aria-label="Animated aerospace propulsion visual">
+        <div class="thruster-card">
+          <div class="grid-plane"></div>
+          <div class="ring ring-one"></div>
+          <div class="ring ring-two"></div>
+          <div class="ring ring-three"></div>
+          <div class="ion-beam"></div>
+          <div class="probe probe-a"></div>
+          <div class="probe probe-b"></div>
+          <div class="status-panel">
+            <span>IONIC WIND THRUSTER</span>
+            <strong>3.2 m/s Measured Flow</strong>
+            <div class="meter"><i></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-band" aria-label="Portfolio highlights">
+      <div>
+        <strong>CAD</strong>
+        <span>Onshape, SolidWorks, Fusion 360 + AutoCAD</span>
+      </div>
+      <div>
+        <strong>Code</strong>
+        <span>Python, MATLAB, Mathematica + AutoHotkey</span>
+      </div>
+      <div>
+        <strong>VT</strong>
+        <span>Aerospace engineering</span>
+      </div>
+    </section>
+
+    <section class="resume-strip section-shell reveal" aria-label="Resume snapshot">
+      <div>
+        <p class="eyebrow">Resume Snapshot</p>
+        <h2>Engineer with a builder's range.</h2>
+      </div>
+      <p>
+        Aerospace engineering at Virginia Tech, with hands-on work in propulsion ideas,
+        product design, CAD modeling, automation, and analysis. This site is built to grow
+        around your resume, project photos, renders, code, and test results.
+      </p>
+      <a class="btn primary" href="Sophmore Resume.pdf" target="_blank" rel="noopener">Open Resume</a>
+    </section>
+
+    <section id="work" class="section-shell">
+      <div class="section-heading reveal">
+        <p class="eyebrow">Featured Work</p>
+        <h2>Projects that start with a problem worth chasing.</h2>
+      </div>
+
+      <div class="project-grid">
+        <article id="ionic-project" class="project-card project-wide reveal">
+          <div class="project-media ionic-media" aria-label="Interactive ionic wind thruster physics diagram">
+            <div class="thruster-visual" data-view="overview">
+              <div class="model-header">
+                <p class="interactive-hint">Interactive model - hover or click components to inspect the physics.</p>
+                <div class="view-toggle" role="group" aria-label="Ionic thruster visualization layer">
+                  <button class="is-active" type="button" data-physics-view="overview" aria-pressed="true">Nickel Emitter</button>
+                  <button type="button" data-physics-view="field" aria-pressed="false">Electric Field</button>
+                  <button type="button" data-physics-view="ionization" aria-pressed="false">Ionization</button>
+                  <button type="button" data-physics-view="collector" aria-pressed="false">Copper Collector</button>
+                  <button type="button" data-physics-view="momentum" aria-pressed="false">Ionic Wind</button>
+                </div>
+              </div>
+
+              <div class="thruster-schematic">
+                <div class="plasma-glow" aria-hidden="true"></div>
+
+                <button
+                  class="physics-hotspot emitter-ring is-active"
+                  type="button"
+                  data-physics-hotspot="emitter"
+                  aria-label="Explain positive nickel emitter ring"
+                >
+                  <span class="ring-shell"></span>
+                  <span class="emitter-spike spike-one"></span>
+                  <span class="emitter-spike spike-two"></span>
+                  <span class="emitter-spike spike-three"></span>
+                  <span class="emitter-spike spike-four"></span>
+                  <span class="emitter-spike spike-five"></span>
+                  <span class="emitter-spike spike-six"></span>
+                  <span class="emitter-spike spike-seven"></span>
+                  <span class="emitter-spike spike-eight"></span>
+                  <span class="charge-label plus-label">+</span>
+                  <span class="electrode-tag emitter-tag">Positive nickel</span>
+                </button>
+
+                <button
+                  class="physics-hotspot collector-ring"
+                  type="button"
+                  data-physics-hotspot="collector"
+                  aria-label="Explain negative copper collector ring"
+                >
+                  <span class="ring-shell"></span>
+                  <span class="charge-label minus-label">&minus;</span>
+                  <span class="electrode-tag collector-tag">Negative copper</span>
+                </button>
+
+                <button
+                  class="physics-hotspot field-hotspot"
+                  type="button"
+                  data-physics-hotspot="field"
+                  aria-label="Explain electric field lines"
+                >
+                  <span class="field-line field-one"><i></i></span>
+                  <span class="field-line field-two"><i></i></span>
+                  <span class="field-line field-three"><i></i></span>
+                  <span class="field-line field-four"><i></i></span>
+                </button>
+
+                <button
+                  class="physics-hotspot molecule-hotspot"
+                  type="button"
+                  data-physics-hotspot="plasma"
+                  aria-label="Explain ionized air molecule"
+                >
+                  <span class="molecule-core"></span>
+                  <span class="electron-dot"></span>
+                </button>
+
+                <button
+                  class="physics-hotspot ion-hotspot ion-one"
+                  type="button"
+                  data-physics-hotspot="ion"
+                  aria-label="Explain accelerated positive ion"
+                >
+                  <span class="ion-particle">+</span>
+                </button>
+                <button
+                  class="physics-hotspot ion-hotspot ion-two"
+                  type="button"
+                  data-physics-hotspot="ion"
+                  aria-label="Explain second accelerated positive ion"
+                >
+                  <span class="ion-particle">+</span>
+                </button>
+
+                <button
+                  class="physics-hotspot airflow-hotspot"
+                  type="button"
+                  data-physics-hotspot="airflow"
+                  aria-label="Explain ionic wind airflow"
+                >
+                  <span class="air-particle"></span>
+                  <span class="air-particle air-particle-secondary"></span>
+                  <span class="air-trail"></span>
+                  <span class="air-label">Ionic wind</span>
+                </button>
+
+                <aside class="physics-info-card" aria-live="polite">
+                  <span class="info-kicker">Hotspot</span>
+                  <h4>Positive Nickel Emitter</h4>
+                  <ul>
+                    <li>Sharp nickel geometry concentrates electric field</li>
+                    <li>Connected to positive high voltage</li>
+                    <li>Strong local field helps ionize nearby air</li>
+                  </ul>
+                </aside>
+              </div>
+            </div>
+          </div>
+          <div class="project-content ionic-content">
+            <span class="project-kicker">Propulsion / Electrohydrodynamics / Experimental Design</span>
+            <h3>Ionic Wind Thruster</h3>
+            <p>
+              A high-voltage electrohydrodynamic thruster that turns Physics II electromagnetism
+              into measurable airflow. A sharp positive nickel emitter and smooth negative copper
+              collector create a strong field across an adjustable gap.
+            </p>
+            <p>
+              Near the emitter, air becomes ionized, ions accelerate through the field, and collisions
+              transfer momentum into neutral air. I use measured wind speed to tune geometry, spacing,
+              electrical connections, and repeatability from one version to the next.
+            </p>
+            <p class="plasma-note">
+              The violet glow comes from excited and ionized air species in the discharge region, with
+              nitrogen contributing strongly to the observed color.
+            </p>
+            <div class="metric-grid ionic-metrics" aria-label="Ionic wind thruster measurements">
+              <div>
+                <strong>~400 kV</strong>
+                <span>high-voltage potential</span>
+              </div>
+              <div>
+                <strong>3.2 m/s</strong>
+                <span>measured airflow</span>
+              </div>
+              <div>
+                <strong>+ to &minus;</strong>
+                <span>field direction</span>
+              </div>
+              <div>
+                <strong>Gap Tuning</strong>
+                <span>iterative geometry</span>
+              </div>
+            </div>
+            <div class="project-actions ionic-actions">
+              <a class="btn primary compact-btn document-cta ionic-prototype-cta" href="#contact">Prototype Photos</a>
+              <a class="btn ghost compact-btn" href="#contact">Ask About Testing</a>
+            </div>
+            <p class="curiosity-line">
+              Ask me about the design evolution, test setup, or physics tradeoffs behind the thruster.
+            </p>
+
+            <section class="physics-panel" aria-labelledby="laws-title">
+              <h4 id="laws-title">Laws &amp; Equations</h4>
+              <div class="equation-grid">
+                <article>
+                  <span class="equation">F = qE</span>
+                  <p>Ion force scales with charge and electric field strength.</p>
+                </article>
+                <article>
+                  <span class="equation">E &asymp; &Delta;V / d</span>
+                  <p>Voltage, gap distance, and sharp geometry set the practical field strength.</p>
+                </article>
+                <article>
+                  <span class="equation">F = k |q<sub>1</sub>q<sub>2</sub>| / r<sup>2</sup></span>
+                  <p>Background electrostatic interaction between charges.</p>
+                </article>
+                <article>
+                  <span class="equation">U = qV</span>
+                  <p>Particles exchange potential energy across the voltage difference.</p>
+                </article>
+                <article>
+                  <span class="equation">KE = 1/2 mv<sup>2</sup></span>
+                  <p>Accelerated ions carry kinetic energy into the flow.</p>
+                </article>
+                <article>
+                  <span class="equation">p = mv</span>
+                  <p>Ion-neutral collisions produce the measurable wind output.</p>
+                </article>
+              </div>
+            </section>
+
+            <div class="engineering-notes">
+              <section>
+                <h4>Why Geometry Matters</h4>
+                <p>
+                  Sharp emitter features concentrate the field and improve ionization efficiency.
+                  The smoother collector, repeatable mounting, and gap tuning help stabilize the
+                  discharge and make airflow tests more comparable.
+                </p>
+              </section>
+              <section>
+                <h4>Design Iteration</h4>
+                <p>
+                  Each revision targets higher airflow, stronger wind, cleaner electrical connections,
+                  better alignment, and more consistent ionization behavior. The current model is part
+                  of an ongoing optimization process.
+                </p>
+              </section>
+            </div>
+
+            <ul class="tag-list">
+              <li>Physics II</li>
+              <li>E&amp;M principles</li>
+              <li>Electrode geometry</li>
+              <li>Ionization</li>
+              <li>Momentum transfer</li>
+              <li>Airflow measurement</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="pen-project" class="project-card project-wide reveal">
+          <div class="project-media pen-media" aria-hidden="true">
+            <div class="pen-stylus">
+              <span></span>
+            </div>
+            <div class="pen-orbit orbit-one"></div>
+            <div class="pen-orbit orbit-two"></div>
+            <div class="paste-window">
+              <span>Ctrl + V</span>
+              <strong>paste.exe</strong>
+            </div>
+            <div class="code-chip chip-one">Send ^v</div>
+            <div class="code-chip chip-two">ExitApp</div>
+          </div>
+          <div class="project-content">
+            <span class="project-kicker">Automation / Human Interface</span>
+            <h3>Surface Pen Paste Workflow</h3>
+            <p>
+              Windows did not offer a built-in way to map the Surface Slim Pen top button to paste.
+              After finding that the button used a proprietary Surface hardware channel instead of
+              a detectable Bluetooth hotkey, I changed the system design: compile an AutoHotkey
+              script into an EXE, map pen double-tap to launch it, send Ctrl+V, and exit instantly.
+            </p>
+            <ul class="tag-list">
+              <li>AutoHotkey</li>
+              <li>Windows Pen Settings</li>
+              <li>Ctrl+V workflow</li>
+              <li>Debugging</li>
+              <li>EXE trigger</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="stihl-project" class="project-card project-wide stihl-project reveal">
+          <div class="project-media tool-media">
+            <div class="stihl-viewer">
+              <div class="stihl-image-stage" aria-label="Interactive STIHL 4-in-1 poster">
+                <img
+                  class="stihl-board"
+                  src="stihl-center-panel.png"
+                  alt="STIHL Four In One Lawn Tool presentation board"
+                />
+                <button class="feature-marker marker-one is-active" type="button" data-feature="drawer" aria-label="Explain feature 1, drawer">1</button>
+                <button class="feature-marker marker-two" type="button" data-feature="flashlight" aria-label="Explain feature 2, flashlight">2</button>
+                <button class="feature-marker marker-three" type="button" data-feature="motion" aria-label="Explain feature 3, motion sensor">3</button>
+                <button class="feature-marker marker-four" type="button" data-feature="charger" aria-label="Explain feature 4, battery charger">4</button>
+                <button class="feature-marker marker-five" type="button" data-feature="sharpener" aria-label="Explain feature 5, knife and axe sharpener">5</button>
+              </div>
+              <div class="feature-detail" aria-live="polite">
+                <span class="feature-number">Feature 1</span>
+                <h4>Drawer</h4>
+                <p>Stores small loose items that do not have a home in a shed or garage.</p>
+              </div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-kicker">Product Design / Mechanisms</span>
+            <h3>STIHL 4-in-1 Project</h3>
+            <p>
+              A lawn-tool organization concept designed to free up garage or shed space by
+              combining four useful functions into one compact STIHL-inspired product.
+            </p>
+            <div class="feature-columns">
+              <div>
+                <h4>3 Mechanical Parts</h4>
+                <ul>
+                  <li><strong>Drawer:</strong> stores small loose items that do not have a home in a garage or shed.</li>
+                  <li><strong>Flashlight pop-out system:</strong> pushing the flashlight head releases it for use.</li>
+                  <li><strong>Manual single-sided blade sharpener:</strong> sharpens tools like shears and pruners.</li>
+                </ul>
+              </div>
+              <div>
+                <h4>4 Electric Parts</h4>
+                <ul>
+                  <li><strong>Battery charger:</strong> compatible with STIHL AK, AP, and AR series batteries.</li>
+                  <li><strong>Electric knife sharpener:</strong> sharpens dual-sided blades like knives and axes.</li>
+                  <li><strong>Infrared motion sensor:</strong> turns the flashlight on for three minutes when motion is detected.</li>
+                  <li><strong>Detachable flashlight:</strong> charges in the unit and can be used on the go.</li>
+                </ul>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="btn primary compact-btn document-cta stihl-cta" href="Joseph Lilly - Stihl Final Board Presentation.pdf" target="_blank" rel="noopener">
+                Open Presentation
+              </a>
+            </div>
+            <ul class="tag-list">
+              <li>3D Engineering</li>
+              <li>Space saving</li>
+              <li>Mechanical systems</li>
+              <li>Electrical systems</li>
+              <li>Product presentation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="hess-project" class="project-card project-wide hess-project reveal">
+          <div class="project-media hess-media" aria-label="Animated AutoCAD drafting visual for the Hess Truck Project">
+            <div class="drafting-board">
+              <div class="drafting-header">
+                <span>Orthographic Drawing Set</span>
+              </div>
+
+              <svg class="hess-drawing hess-orthographic-simple" viewBox="0 0 760 520" role="img" aria-labelledby="hess-drawing-title hess-drawing-desc">
+                <title id="hess-drawing-title">Simple orthographic drawing example</title>
+                <desc id="hess-drawing-desc">
+                  A simple block and circle object shown as isometric, side, front, and top orthographic views.
+                </desc>
+                <defs>
+                  <marker id="hessDimArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M 0 0 L 10 5 L 0 10 z"></path>
+                  </marker>
+                </defs>
+
+                <g class="simple-sheet">
+                  <path class="sheet-border" d="M34 34 H726 V486 H34 Z" />
+                </g>
+
+                <g class="ortho-view iso-view">
+                  <text class="view-label" x="220" y="112">3D VIEW</text>
+                  <path class="draft-line iso-line line-delay-1" d="M206 292 L322 318 L244 364 L128 338 Z" />
+                  <path class="draft-line iso-line line-delay-2" d="M102 332 V362 L244 394 V364 M244 394 L322 348 V318" />
+                  <path class="draft-line iso-line line-delay-1" d="M128 338 V206 L206 164 V292" />
+                  <path class="draft-line iso-line line-delay-2" d="M102 332 V196 L128 206 M102 196 L180 154 L206 164" />
+                  <ellipse class="draft-line iso-circle line-delay-3" cx="167" cy="249" rx="27" ry="43" transform="rotate(4 167 249)" />
+                </g>
+
+                <g class="ortho-view ortho-side">
+                  <text class="view-label" x="467" y="70">SIDE VIEW</text>
+                  <path class="draft-line ortho-outline line-delay-1" d="M386 236 H548 V196 H426 V84 H386 Z" />
+                  <path class="draft-line hidden-line line-delay-2" d="M386 104 H426 M386 172 H426" />
+                  <path class="draft-line center-line line-delay-3" d="M386 138 H426" />
+                </g>
+
+                <g class="ortho-view ortho-front">
+                  <text class="view-label" x="648" y="70">FRONT VIEW</text>
+                  <path class="draft-line ortho-outline line-delay-1" d="M586 84 H710 V236 H586 Z" />
+                  <circle class="draft-line ortho-circle line-delay-2" cx="648" cy="138" r="34" />
+                  <path class="draft-line ortho-detail line-delay-2" d="M586 196 H710" />
+                  <path class="draft-line center-line tiny-center-line line-delay-3" d="M644 138 H652 M648 134 V142" />
+                </g>
+
+                <g class="ortho-view ortho-top">
+                  <text class="view-label" x="446" y="304">TOP VIEW</text>
+                  <path class="draft-line ortho-outline line-delay-1" d="M386 316 H506 V452 H386 Z" />
+                  <path class="draft-line ortho-detail line-delay-2" d="M386 356 H506" />
+                  <path class="draft-line hidden-line line-delay-3" d="M412 316 V356 M480 316 V356" />
+                  <path class="draft-line center-line line-delay-3" d="M446 316 V356" />
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-kicker">Technical Drafting / AutoCAD 2D / Reverse Engineering</span>
+            <h3>Hess Truck Project</h3>
+            <p>
+              An individual high school engineering project focused on technical drafting and documentation.
+              Using direct measurements from a real Hess truck, I recreated the vehicle in AutoCAD 2D and
+              organized it into clean orthographic views.
+            </p>
+            <p>
+              The final drawing emphasized accuracy, selective dimensioning, and professional presentation.
+              I was especially proud of how closely the finished document matched the original truck and
+              how clearly it communicated the geometry in a formal drafting format.
+            </p>
+
+            <div class="project-links">
+              <a class="btn primary compact-btn document-cta hess-cta" href="Lilly Hess.pdf" target="_blank" rel="noopener">
+                Open Drawing PDF
+              </a>
+            </div>
+            <ul class="tag-list">
+              <li>AutoCAD 2D</li>
+              <li>Technical drawing</li>
+              <li>Orthographic views</li>
+              <li>Dimensioning</li>
+              <li>Measurement</li>
+              <li>Documentation</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="kitchen-project" class="project-card project-wide kitchen-project reveal">
+          <div class="project-media kitchen-media" aria-label="Animated AutoCAD kitchen modeling and rendering visual">
+            <div class="kitchen-scene">
+              <div class="kitchen-light-sweep" aria-hidden="true"></div>
+              <div class="kitchen-badge">AutoCAD 3D Render</div>
+              <span class="kitchen-orbit kitchen-orbit-one" aria-hidden="true"></span>
+              <span class="kitchen-orbit kitchen-orbit-two" aria-hidden="true"></span>
+              <div class="kitchen-chip kitchen-chip-one" aria-hidden="true">Materials</div>
+              <div class="kitchen-chip kitchen-chip-two" aria-hidden="true">Rendered views</div>
+
+              <div class="kitchen-wall" aria-hidden="true">
+                <span class="kitchen-window"><i></i></span>
+                <span class="upper-cab upper-cab-one"></span>
+                <span class="upper-cab upper-cab-two"></span>
+                <span class="upper-cab upper-cab-three"></span>
+                <span class="fridge-block"></span>
+                <span class="base-cab base-cab-one"></span>
+                <span class="base-cab base-cab-two"></span>
+                <span class="base-cab base-cab-three"></span>
+                <span class="countertop-line"></span>
+                <span class="sink-basin"></span>
+              </div>
+
+              <div class="kitchen-floor" aria-hidden="true"></div>
+              <div class="kitchen-island" aria-hidden="true">
+                <span class="island-top"></span>
+                <span class="island-front"></span>
+                <span class="island-side"></span>
+              </div>
+              <span class="kitchen-stool stool-one" aria-hidden="true"><i></i></span>
+              <span class="kitchen-stool stool-two" aria-hidden="true"><i></i></span>
+              <span class="kitchen-stool stool-three" aria-hidden="true"><i></i></span>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-kicker">Interior Modeling / AutoCAD 3D / Visualization</span>
+            <h3>Kitchen Design Project</h3>
+            <p>
+              A 3D kitchen modeling and rendering project completed in AutoCAD 3D. I built the
+              major kitchen components individually, then assembled them into a complete interior
+              scene from custom-made parts.
+            </p>
+            <p>
+              After modeling the scene, I applied materials and produced rendered views to present
+              the final design. The project emphasized spatial layout, visual consistency, clean
+              presentation, and a full 3D modeling-to-rendering workflow.
+            </p>
+
+            <div class="project-links">
+              <a class="btn primary compact-btn document-cta kitchen-cta" href="LillyKitchen.pdf" target="_blank" rel="noopener">
+                Open Render Sheet
+              </a>
+            </div>
+            <ul class="tag-list">
+              <li>AutoCAD 3D</li>
+              <li>Rendering</li>
+              <li>Interior modeling</li>
+              <li>Materials</li>
+              <li>Scene design</li>
+              <li>Visualization</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="airfoil-project" class="project-card project-wide airfoil-project reveal">
+          <div class="project-media airfoil-media" aria-label="Animated airfoil coordinate processing visual">
+            <div class="airfoil-board">
+              <div class="airfoil-chip chip-source">Airfoil Tools</div>
+              <div class="airfoil-chip chip-matlab">MATLAB cleanup</div>
+              <div class="airfoil-chip chip-cad">SolidWorks-ready</div>
+              <svg class="airfoil-plot" viewBox="0 0 620 360" role="img" aria-labelledby="airfoil-visual-title">
+                <title id="airfoil-visual-title">Airfoil coordinate data cleaned into CAD-ready curves</title>
+                <path class="airfoil-axis" d="M72 282 H552 M88 298 V72" />
+                <path class="airfoil-grid-line" d="M88 222 H540 M88 164 H540 M160 282 V78 M280 282 V78 M400 282 V78 M520 282 V78" />
+                <path class="raw-airfoil" d="M556 184 C509 150 430 130 336 124 C231 118 142 142 108 181 C95 195 101 211 120 219 C178 239 281 219 390 200 C470 187 529 184 556 184" />
+                <path class="clean-airfoil" d="M556 184 C512 153 433 134 338 128 C232 123 146 145 112 182 C101 194 105 208 122 216 C180 233 281 215 392 198 C472 186 530 184 556 184" />
+                <g class="airfoil-points">
+                  <circle cx="112" cy="182" r="3" />
+                  <circle cx="154" cy="154" r="3" />
+                  <circle cx="236" cy="132" r="3" />
+                  <circle cx="338" cy="128" r="3" />
+                  <circle cx="438" cy="136" r="3" />
+                  <circle cx="512" cy="154" r="3" />
+                  <circle cx="556" cy="184" r="3" />
+                  <circle cx="472" cy="186" r="3" />
+                  <circle cx="330" cy="207" r="3" />
+                  <circle cx="122" cy="216" r="3" />
+                </g>
+                <path class="print-slice" d="M462 92 V262 M478 96 V258 M494 102 V252" />
+              </svg>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-kicker">MATLAB / Airfoil Data / Blade Design</span>
+            <h3>Wind Turbine Blade Airfoil Processing</h3>
+            <p>
+              Processed airfoil coordinate data in MATLAB for a mini-scale floating wind turbine
+              blade design, converting raw airfoil profiles into cleaner CAD-ready curves for
+              SolidWorks modeling.
+            </p>
+            <p>
+              As part of the Virginia Tech Wind Turbine Team, I worked on blade design for a
+              mini-scale floating wind turbine concept for the Great Lakes. I researched airfoil
+              profiles, collected coordinate data from Airfoil Tools, reduced point density, and
+              prepared curves that kept the profile shape usable for CAD workflow support.
+            </p>
+            <div class="project-skill-grid">
+              <section>
+                <h4>Tools Used</h4>
+                <p>MATLAB, SolidWorks, Airfoil Tools</p>
+              </section>
+              <section>
+                <h4>Skills Demonstrated</h4>
+                <p>Data cleanup, CAD preparation, blade design, and SolidWorks workflow support.</p>
+              </section>
+            </div>
+            <ul class="tag-list">
+              <li>MATLAB</li>
+              <li>SolidWorks</li>
+              <li>Airfoil Tools</li>
+              <li>Blade Design</li>
+              <li>Data Processing</li>
+              <li>CAD Preparation</li>
+              <li>Team Project</li>
+            </ul>
+          </div>
+        </article>
+
+        <article id="guitar-project" class="project-card project-wide guitar-project reveal">
+          <div class="project-media guitar-media" aria-label="Animated CAD-to-fabrication electric string instrument visual">
+            <div class="guitar-board">
+              <div class="guitar-chip chip-sw">CAD model</div>
+              <div class="guitar-chip chip-fusion">Pitch testing</div>
+              <div class="guitar-chip chip-fab">CNC cut</div>
+              <div class="guitar-neck" aria-hidden="true"></div>
+              <div class="guitar-body" aria-hidden="true">
+                <span class="pickup pickup-one"></span>
+                <span class="pickup pickup-two"></span>
+                <span class="guitar-bridge"></span>
+              </div>
+              <div class="guitar-strings" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <div class="guitar-cut-path" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="project-content">
+            <span class="project-kicker">Team Design / CAD / CNC Fabrication</span>
+            <h3>The Electric Stick</h3>
+            <p>
+              The Electric Stick was a Team Metallica class final project where we designed, built,
+              tested, and presented a low-cost electric string instrument. The goal was an original,
+              accessible instrument with simple tuning, amplified output, and about two octaves of
+              playable pitch range.
+            </p>
+            <p>
+              The team moved from brainstorming and rough prototypes into CAD modeling, CNC
+              fabrication, laser cutting, pitch testing, musician feedback, and a final presentation. The prototype
+              worked and stayed low cost at about $41.59 in listed materials, while the final report
+              honestly documented issues like string height, bowing, pickup stability, and future
+              playability improvements.
+            </p>
+            <div class="project-skill-grid">
+              <section>
+                <h4>Tools Used</h4>
+                <p>SolidWorks, Fusion 360, CAD modeling, CNC fabrication, laser cutting, hands-on assembly, and pitch testing.</p>
+              </section>
+              <section>
+                <h4>Skills Demonstrated</h4>
+                <p>Team design, rapid prototyping, testing, cost analysis, design iteration, and documentation.</p>
+              </section>
+            </div>
+            <div class="project-links">
+              <a class="btn primary compact-btn" href="Metallica_Electric_Stick_Project_Compiled.pdf" target="_blank" rel="noopener">Open Project PDF</a>
+            </div>
+            <ul class="tag-list">
+              <li>CAD</li>
+              <li>CNC</li>
+              <li>Laser Cutting</li>
+              <li>Prototyping</li>
+              <li>Team Design</li>
+              <li>Testing</li>
+              <li>Low-Cost Design</li>
+              <li>Musical Instrument Design</li>
+              <li>Design Iteration</li>
+              <li>SolidWorks</li>
+              <li>Fusion 360</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="workflow" class="workflow-section">
+      <div class="section-shell workflow-shell">
+        <div class="workflow-intro reveal">
+          <p class="eyebrow">How I Work</p>
+          <h2>How I craft simple solutions to complex problems.</h2>
+          <p>
+            Each project below connects the way I think with the tools I used and the final thing I
+            built, analyzed, or presented.
+          </p>
+        </div>
+
+        <div class="evidence-board reveal" data-evidence-board>
+          <div class="evidence-controls" aria-label="Evidence board filters">
+            <div>
+              <span>Filter by tool or output</span>
+              <div class="evidence-filters">
+                <button class="is-active" type="button" data-evidence-filter="all">All</button>
+                <button type="button" data-evidence-filter="cad">CAD</button>
+                <button type="button" data-evidence-filter="analysis">Analysis</button>
+                <button type="button" data-evidence-filter="fabrication">Fabrication</button>
+                <button type="button" data-evidence-filter="presentation">Presentation</button>
+                <button type="button" data-evidence-filter="solidworks">SolidWorks</button>
+                <button type="button" data-evidence-filter="matlab">MATLAB</button>
+                <button type="button" data-evidence-filter="mathematica">Mathematica</button>
+                <button type="button" data-evidence-filter="python">Python</button>
+                <button type="button" data-evidence-filter="autohotkey">AutoHotkey</button>
+                <button type="button" data-evidence-filter="onshape">Onshape</button>
+                <button type="button" data-evidence-filter="fusion-360">Fusion 360</button>
+                <button type="button" data-evidence-filter="autocad">AutoCAD</button>
+                <button type="button" data-evidence-filter="cnc">CNC</button>
+                <button type="button" data-evidence-filter="laser-cutting">Laser Cutting</button>
+              </div>
+            </div>
+            <p data-evidence-status>Showing all projects across the engineering workflow.</p>
+          </div>
+
+          <div class="evidence-matrix" role="table" aria-label="Engineering workflow matrix">
+            <div class="evidence-head" role="row">
+              <div role="columnheader">Project</div>
+              <button type="button" role="columnheader" data-evidence-stage="notice"><span>01</span> Notice</button>
+              <button type="button" role="columnheader" data-evidence-stage="map"><span>02</span> Map</button>
+              <button type="button" role="columnheader" data-evidence-stage="build"><span>03</span> Build</button>
+              <button type="button" role="columnheader" data-evidence-stage="integrate"><span>04</span> Integrate</button>
+            </div>
+
+            <article class="evidence-row is-selected" data-project="ionic" data-tools="solidworks 3d-printing cad fabrication">
+              <button class="evidence-project-cell" type="button" data-evidence-project="ionic">
+                <strong>Ionic Wind Thruster Redesign</strong>
+                <span>Propulsion prototype</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Unstable sliding ring mount and unreliable electrical connections made alignment and repeatability difficult.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Tested airflow, ring spacing, and mechanical constraints to determine what needed to change.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="solidworks 3d-printing cad fabrication">
+                <p>Created a more stable emitter/collector mounting concept and sliding adjustment system.</p>
+                <div class="evidence-cell-tools"><span>SolidWorks</span><span>3D Printing</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate">
+                <p>Improved repeatability, alignment, and prototype usability.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="airfoil" data-tools="matlab solidworks cad analysis">
+              <button class="evidence-project-cell" type="button" data-evidence-project="airfoil">
+                <strong>Wind Turbine Blade Airfoil Processing</strong>
+                <span>Wind turbine blade geometry prep</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Needed airfoil geometry for a mini-scale floating wind turbine blade concept.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map" data-tools="matlab analysis">
+                <p>Gathered coordinate data with Airfoil Tools, then cleaned and reduced point sets in MATLAB.</p>
+                <div class="evidence-cell-tools"><span>Airfoil Tools</span><span>MATLAB</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="matlab solidworks cad analysis">
+                <p>Prepared cleaner curves for SolidWorks blade modeling.</p>
+                <div class="evidence-cell-tools"><span>MATLAB</span><span>SolidWorks</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate">
+                <p>Connected airfoil research, data cleanup, and CAD modeling workflow support.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="guitar" data-tools="solidworks fusion-360 cnc laser-cutting cad fabrication presentation">
+              <button class="evidence-project-cell" type="button" data-evidence-project="guitar">
+                <strong>The Electric Stick</strong>
+                <span>Low-cost electric instrument</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Needed an original, low-cost instrument that was easy to tune, accessible, amplified, and playable across about two octaves.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Brainstormed concepts, compared rough prototypes, reviewed showcase feedback, and used musician input to choose the string instrument direction.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="solidworks fusion-360 cnc laser-cutting cad fabrication">
+                <p>Moved from sketches and prototypes into CAD, then used CNC fabrication and laser cutting for the physical build.</p>
+                <div class="evidence-cell-tools"><span>SolidWorks</span><span>Fusion 360</span><span>CNC</span><span>Laser Cutting</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate" data-tools="presentation">
+                <p>Tested pitch, setup time, cost, tuning, usability, and limitations before presenting the final prototype and lessons learned.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="stihl" data-tools="onshape cad presentation">
+              <button class="evidence-project-cell" type="button" data-evidence-project="stihl">
+                <strong>STIHL 4-in-1 Storage Reduction Tool</strong>
+                <span>Parametric product concept</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Multiple garage tools take up space and create storage clutter.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Planned a compact multi-function product combining charging, sharpening, lighting, sensing, and storage.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="onshape cad">
+                <p>Created a fully parametric CAD model and engineering drawings.</p>
+                <div class="evidence-cell-tools"><span>Onshape</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate" data-tools="presentation">
+                <p>Prepared the concept for presentation with drawings, visuals, and product explanation.</p>
+                <div class="evidence-cell-tools"><span>Presentation</span></div>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="kitchen" data-tools="autocad cad presentation">
+              <button class="evidence-project-cell" type="button" data-evidence-project="kitchen">
+                <strong>AutoCAD Kitchen Rendering</strong>
+                <span>Interior modeling and rendering</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Needed to model a complete interior space with realistic component placement and materials.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Planned layout, dimensions, and component relationships.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="autocad cad">
+                <p>Modeled cabinets, counters, appliances, and kitchen components.</p>
+                <div class="evidence-cell-tools"><span>AutoCAD 3D</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate" data-tools="presentation">
+                <p>Applied materials and produced rendered visuals.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="hess" data-tools="autocad cad presentation">
+              <button class="evidence-project-cell" type="button" data-evidence-project="hess">
+                <strong>Hess Truck Technical Drawing</strong>
+                <span>AutoCAD 2D documentation</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Needed to document a real object accurately from direct physical measurement.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Measured major and small features, then planned clean orthographic views and selective dimensions.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="autocad cad">
+                <p>Recreated the truck as a precise AutoCAD 2D technical drawing.</p>
+                <div class="evidence-cell-tools"><span>AutoCAD 2D</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate" data-tools="presentation">
+                <p>Produced a clean dimensioned drawing sheet with professional drafting presentation.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="structures" data-tools="mathematica analysis">
+              <button class="evidence-project-cell" type="button" data-evidence-project="structures">
+                <strong>Thin-Walled Structures Final Analysis</strong>
+                <span>Aerospace structures / Mathematica</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Needed to analyze an open-section thin-walled beam with and without stringers.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map" data-tools="mathematica analysis">
+                <p>Broke the geometry into wall segments and moved between local/prime and global coordinate systems.</p>
+                <div class="evidence-cell-tools"><span>Mathematica</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="mathematica analysis">
+                <p>Calculated centroid, translated component locations, inertias, first moments, shear flow, branch forces, and shear center locations.</p>
+                <div class="evidence-cell-tools"><span>Mathematica</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate">
+                <p>Organized symbolic workflows and equations into a final aerospace structures analysis document.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="python" data-tools="python analysis">
+              <button class="evidence-project-cell" type="button" data-evidence-project="python">
+                <strong>Money Guide</strong>
+                <span>Python finance decision tool</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Needed a simple way to compare monthly income, expenses, and debt payments before making savings decisions.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Planned the decision flow for spare cash, debt payments, savings options, and growth projections.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="python analysis">
+                <p>Built a Python program with functions, user input, calculations, conditionals, loops, and formatted output.</p>
+                <div class="evidence-cell-tools"><span>Python</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate">
+                <p>Organized the program into readable reusable pieces and presented one-year and three-year savings projections.</p>
+              </div>
+            </article>
+
+            <article class="evidence-row" data-project="pen" data-tools="autohotkey analysis">
+              <button class="evidence-project-cell" type="button" data-evidence-project="pen">
+                <strong>Surface Pen Paste Workflow</strong>
+                <span>Automation and interface workaround</span>
+              </button>
+              <div class="evidence-cell" data-stage="notice" data-stage-label="Notice">
+                <p>Windows did not provide a simple way to map the Surface Pen top button directly to paste.</p>
+              </div>
+              <div class="evidence-cell" data-stage="map" data-stage-label="Map">
+                <p>Investigated the pen input path and found the button used a proprietary Surface hardware channel.</p>
+              </div>
+              <div class="evidence-cell" data-stage="build" data-stage-label="Build" data-tools="autohotkey analysis">
+                <p>Built an AutoHotkey executable that sends Ctrl+V and exits instantly when launched.</p>
+                <div class="evidence-cell-tools"><span>AutoHotkey</span></div>
+              </div>
+              <div class="evidence-cell" data-stage="integrate" data-stage-label="Integrate">
+                <p>Mapped pen double-tap to the executable, creating a fast and reusable paste workflow.</p>
+              </div>
+            </article>
+          </div>
+
+          <article class="evidence-proof-card" aria-live="polite" data-evidence-proof>
+            <div>
+              <p class="project-kicker">Expanded Project Proof</p>
+              <h3 data-evidence-title>Ionic Wind Thruster Redesign</h3>
+              <p data-evidence-summary>
+                A propulsion prototype revision that turned test observations into a more stable and repeatable mechanical setup.
+              </p>
+            </div>
+            <ul class="evidence-proof-tools" data-evidence-tools>
+              <li>SolidWorks</li>
+              <li>3D Printing</li>
+            </ul>
+            <div class="evidence-proof-breakdown" data-evidence-breakdown></div>
+            <div class="evidence-proof-output">
+              <span>Final Output</span>
+              <p data-evidence-output>More repeatable emitter/collector alignment and a prototype setup that was easier to adjust and test.</p>
+            </div>
+            <a class="btn primary compact-btn evidence-proof-link" href="#ionic-project" data-evidence-link>View Project</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <div class="section-shell contact-layout reveal">
+        <div>
+          <p class="eyebrow">Next Step</p>
+          <h2>Ready for internships, lab work, design teams, and ambitious builds.</h2>
+          <p>
+            Explore the resume, reach out about project work, or connect around aerospace,
+            mechanical design, automation, and hands-on prototyping.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <button class="btn primary copy-email" type="button" data-email="joseph24@vt.edu">
+            Email Me
+          </button>
+          <a class="btn ghost" href="Sophmore Resume.pdf" target="_blank" rel="noopener">Resume</a>
+          <a
+            class="btn ghost"
+            href="https://www.linkedin.com/in/joseph-lilly-jr"
+            target="_blank"
+            rel="noopener"
+          >LinkedIn</a>
+          <span class="copy-status" role="status" aria-live="polite"></span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js?v=20260520-project-additions"></script>
+</body>
+</html>
