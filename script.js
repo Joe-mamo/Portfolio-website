@@ -399,7 +399,7 @@ const renderEvidenceProject = (projectKey) => {
       const opensDocument = project.link.toLowerCase().endsWith(".pdf");
       if (opensDocument) {
         evidenceLink.setAttribute("target", "_blank");
-        evidenceLink.setAttribute("rel", "noopener");
+        evidenceLink.setAttribute("rel", "noopener noreferrer");
       } else {
         evidenceLink.removeAttribute("target");
         evidenceLink.removeAttribute("rel");

@@ -1,0 +1,28 @@
+# Sensitive configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Dependencies and generated output
+node_modules/
+dist/
+build/
+coverage/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor settings
+.vscode/
+.idea/
