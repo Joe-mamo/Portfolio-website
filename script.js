@@ -119,7 +119,7 @@ const evidenceProjects = {
     output: "More repeatable emitter/collector alignment and a prototype setup that was easier to adjust and test.",
     link: "#ionic-project",
     stages: {
-      notice: "Theorized electric field directions, improved electrical connections for safety and reliability, and made the setup more repeatable.",
+      notice: "The prototype's electrical connections and sliding setup were not safe or reliable enough, so the focus was on improving connection stability, alignment, and repeatability.",
       map: "Tested airflow, ring spacing, and mechanical constraints to determine what needed to change.",
       build: "Created a more stable emitter/collector mounting concept and sliding adjustment system.",
       integrate: "Improved repeatability, alignment, and prototype usability."
