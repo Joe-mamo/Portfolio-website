@@ -114,12 +114,12 @@ const viewHotspotMap = {
 const evidenceProjects = {
   ionic: {
     title: "Ionic Wind Thruster Redesign",
-    summary: "A propulsion prototype revision that turned test observations into a more stable and repeatable mechanical setup.",
+    summary: "A wind propulsion prototype that used multiple prototypes, test observations, and theory to create faster airflow and opposite-direction thrust.",
     tools: ["SolidWorks", "3D Printing"],
     output: "More repeatable emitter/collector alignment and a prototype setup that was easier to adjust and test.",
     link: "#ionic-project",
     stages: {
-      notice: "Unstable sliding ring mount and unreliable electrical connections made alignment and repeatability difficult.",
+      notice: "Theorized electric field directions, improved electrical connections for safety and reliability, and made the setup more repeatable.",
       map: "Tested airflow, ring spacing, and mechanical constraints to determine what needed to change.",
       build: "Created a more stable emitter/collector mounting concept and sliding adjustment system.",
       integrate: "Improved repeatability, alignment, and prototype usability."
@@ -132,23 +132,23 @@ const evidenceProjects = {
     output: "Processed airfoil profiles prepared for SolidWorks blade modeling and CAD workflow support.",
     link: "#airfoil-project",
     stages: {
-      notice: "Needed airfoil geometry for a mini-scale floating wind turbine blade concept for the Great Lakes.",
+      notice: "Needed to reduce airfoil coordinate points so the profile could be plotted, 3D printed, and implemented for the wind turbine.",
       map: "Researched airfoil profiles with Airfoil Tools, gathered coordinate data, and cleaned point sets in MATLAB.",
       build: "Reduced point density and prepared smoother CAD-ready curves for SolidWorks blade modeling.",
-      integrate: "Connected airfoil research, data preparation, and CAD modeling workflow support."
+      integrate: "3D printed and installed the airfoil blades on a mini-scale wind turbine designed for the Great Lakes region."
     }
   },
   guitar: {
     title: "The Electric Stick",
-    summary: "A Team Metallica class final project focused on designing, building, testing, and presenting a low-cost electric string instrument.",
+    summary: "A Virginia Tech engineering class final project focused on designing, building, testing, and presenting a low-cost, homemade instrument.",
     tools: ["SolidWorks", "Fusion 360", "CNC", "Laser Cutting", "Pitch testing", "Engineering presentation"],
     output: "A functional CNC-cut and laser-cut electric string instrument prototype with documented pitch testing, cost analysis, limitations, musician feedback, and lessons learned.",
     link: "Metallica_Electric_Stick_Project_Compiled.pdf",
     stages: {
       notice: "Needed an original instrument that was low cost, accessible, easy to tune, amplified, and capable of about two octaves.",
       map: "Brainstormed several concepts, tested rough prototypes, reviewed showcase feedback, and used musician input to choose the electric string instrument direction.",
-      build: "Moved through a sketch-to-CAD fabrication workflow using CNC and laser cutting to create a wooden body with strings, tuning hardware, and an output jack for amplification.",
-      integrate: "Documented pitch data, cost, setup time, limitations, feedback, and lessons learned in the final class presentation."
+      build: "Moved through a sketch-to-CAD fabrication workflow, CNC-machined the final body out of white PVC decking, and used a laser-cut wooden backing with strings, tuning hardware, and an output jack for amplification.",
+      integrate: "Documented the project, completed it on time, presented it in the final class presentation, and played a song in front of the class to prove it worked."
     }
   },
   stihl: {
@@ -172,9 +172,9 @@ const evidenceProjects = {
     link: "#kitchen-project",
     stages: {
       notice: "Needed to model a complete interior space with realistic component placement and materials.",
-      map: "Planned layout, dimensions, and component relationships.",
-      build: "Modeled cabinets, counters, appliances, and kitchen components.",
-      integrate: "Applied materials and produced rendered visuals."
+      map: "Planned layout, dimensions, and appliance components to go in the kitchen.",
+      build: "Made each kitchen part separately and assigned materials to each component in the part assembly.",
+      integrate: "Created an assembly, placed all parts in the kitchen, set up camera angles for the render, and produced the rendered visuals."
     }
   },
   hess: {
@@ -194,7 +194,7 @@ const evidenceProjects = {
     title: "Thin-Walled Structures Final Analysis",
     summary: "A final Thin-Walled Structures homework analysis using Mathematica to study an open-section beam with and without stringers.",
     tools: ["Mathematica", "Thin-walled beam theory", "Coordinate transformations", "Symbolic computation"],
-    output: "A documented aerospace structures analysis covering centroid calculations, transformed coordinates, second moments of area, product of inertia, shear flow, branch forces, and shear center / center of moment locations.",
+    output: "A documented aerospace structures analysis covering centroid calculations, transformed coordinates, second area of moment, product of inertia, shear flow, branch forces, and shear center / center of moment locations.",
     link: "Aerospace Structures Calculations.pdf",
     stages: {
       notice: "Needed to analyze an open-section thin-walled beam with and without stringers.",
@@ -205,7 +205,7 @@ const evidenceProjects = {
   },
   python: {
     title: "Money Guide",
-    summary: "A Spring 2025 Python program that helps users make basic personal finance decisions by comparing monthly income, expenses, and debt payments.",
+    summary: "A Python project that helps users make basic personal finance decisions by comparing monthly income, expenses, and debt payments.",
     tools: ["Python", "Functions", "Conditionals", "Loops", "Formatted output"],
     output: "A readable decision-making program that calculates spare cash and projects one-year and three-year savings growth across several simple scenarios.",
     link: "Money_Guide_Final_Simple_Joseph_Lilly.pdf",
