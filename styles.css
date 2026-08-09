@@ -46,10 +46,16 @@ a {
   height: 22rem;
   pointer-events: none;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(24, 169, 153, 0.2), transparent 66%);
+  color: rgba(24, 169, 153, 0.2);
+  background: radial-gradient(circle, currentColor, transparent 66%);
   transform: translate3d(-50%, -50%, 0);
-  transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease, color 0.28s ease;
   z-index: 0;
+}
+
+.cursor-light.is-workflow-active {
+  color: rgba(189, 211, 90, 0.24);
+  z-index: 1;
 }
 
 .site-header {
@@ -2803,10 +2809,7 @@ p {
   overflow: hidden;
   margin: clamp(4rem, 10vw, 8rem) 0 0;
   padding: clamp(4rem, 10vw, 7rem) 0;
-  background:
-    radial-gradient(circle at 14% 16%, rgba(229, 117, 31, 0.2), transparent 19rem),
-    radial-gradient(circle at 86% 18%, rgba(24, 169, 153, 0.18), transparent 21rem),
-    linear-gradient(135deg, #10131a, #1b2c34 58%, #11151d);
+  background: linear-gradient(135deg, #10131a, #1b2c34 58%, #11151d);
   color: white;
 }
 
@@ -2824,7 +2827,7 @@ p {
 
 .workflow-shell {
   position: relative;
-  z-index: 1;
+  z-index: 2;
 }
 
 .workflow-intro {

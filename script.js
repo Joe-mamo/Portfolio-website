@@ -23,6 +23,7 @@ const evidenceBreakdown = document.querySelector("[data-evidence-breakdown]");
 const evidenceOutput = document.querySelector("[data-evidence-output]");
 const evidenceLink = document.querySelector("[data-evidence-link]");
 const workflowProjectLinks = document.querySelectorAll("[data-workflow-project]");
+const workflowSection = document.querySelector(".workflow-section");
 
 const stihlFeatures = {
   drawer: {
@@ -115,7 +116,7 @@ const evidenceProjects = {
   ionic: {
     title: "Ionic Wind Thruster Redesign",
     summary: "A wind propulsion prototype that used multiple prototypes, test observations, and theory to create faster airflow and opposite-direction thrust.",
-    tools: ["SolidWorks", "3D Printing"],
+    tools: ["SolidWorks", "Fusion 360", "Onshape", "3D Printing"],
     output: "More repeatable emitter/collector alignment and a prototype setup that was easier to adjust and test.",
     link: "#ionic-project",
     stages: {
@@ -249,6 +250,14 @@ window.addEventListener("pointermove", (event) => {
   if (!cursorLight) return;
   cursorLight.style.left = `${event.clientX}px`;
   cursorLight.style.top = `${event.clientY}px`;
+});
+
+workflowSection?.addEventListener("mouseenter", () => {
+  cursorLight?.classList.add("is-workflow-active");
+});
+
+workflowSection?.addEventListener("mouseleave", () => {
+  cursorLight?.classList.remove("is-workflow-active");
 });
 
 const showCopyStatus = (message) => {
