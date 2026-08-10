@@ -34,8 +34,12 @@ const mobileEvidenceOutput = document.querySelector("[data-mobile-evidence-outpu
 const mobileEvidenceLink = document.querySelector("[data-mobile-evidence-link]");
 const workflowProjectLinks = document.querySelectorAll("[data-workflow-project]");
 const workflowSection = document.querySelector(".workflow-section");
+const themeToggle = document.querySelector("[data-theme-toggle]");
+const themeToggleText = document.querySelector("[data-theme-toggle-text]");
 const supportsPointerCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const mobileWorkflowQuery = window.matchMedia("(max-width: 1024px)");
+const themePreferenceQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const themeStorageKey = "portfolio-theme";
 
 const stihlFeatures = {
   drawer: {
@@ -245,6 +249,62 @@ const evidenceProjects = {
 };
 
 let pinnedPhysicsHotspot = null;
+
+const getStoredTheme = () => {
+  try {
+    return localStorage.getItem(themeStorageKey);
+  } catch {
+    return null;
+  }
+};
+
+const storeTheme = (theme) => {
+  try {
+    localStorage.setItem(themeStorageKey, theme);
+  } catch {
+    // Theme still applies for the current page even if storage is unavailable.
+  }
+};
+
+const applyTheme = (theme, shouldStore = false) => {
+  const activeTheme = theme === "dark" ? "dark" : "light";
+  const nextTheme = activeTheme === "dark" ? "light" : "dark";
+
+  document.documentElement.dataset.theme = activeTheme;
+  document.documentElement.style.colorScheme = activeTheme;
+
+  themeToggle?.setAttribute("aria-pressed", String(activeTheme === "dark"));
+  themeToggle?.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+
+  if (themeToggleText) {
+    themeToggleText.textContent = nextTheme === "dark" ? "Dark" : "Light";
+  }
+
+  if (shouldStore) {
+    storeTheme(activeTheme);
+  }
+};
+
+const getPreferredTheme = () => getStoredTheme() || (themePreferenceQuery.matches ? "dark" : "light");
+
+applyTheme(document.documentElement.dataset.theme || getPreferredTheme());
+
+themeToggle?.addEventListener("click", () => {
+  const activeTheme = document.documentElement.dataset.theme === "dark" ? "dark" : "light";
+  applyTheme(activeTheme === "dark" ? "light" : "dark", true);
+});
+
+const handleThemePreferenceChange = (event) => {
+  if (!getStoredTheme()) {
+    applyTheme(event.matches ? "dark" : "light");
+  }
+};
+
+if (typeof themePreferenceQuery.addEventListener === "function") {
+  themePreferenceQuery.addEventListener("change", handleThemePreferenceChange);
+} else if (typeof themePreferenceQuery.addListener === "function") {
+  themePreferenceQuery.addListener(handleThemePreferenceChange);
+}
 
 const closeNav = () => {
   nav?.classList.remove("is-open");
