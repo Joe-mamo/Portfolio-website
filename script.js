@@ -14,6 +14,7 @@ const evidenceFilters = document.querySelectorAll("[data-evidence-filter]");
 const evidenceStageButtons = document.querySelectorAll("[data-evidence-stage]");
 const evidenceRows = document.querySelectorAll(".evidence-row");
 const evidenceCells = document.querySelectorAll(".evidence-cell");
+const evidenceSearch = document.querySelector("[data-evidence-search]");
 const evidenceStatus = document.querySelector("[data-evidence-status]");
 const evidenceProof = document.querySelector("[data-evidence-proof]");
 const evidenceTitle = document.querySelector("[data-evidence-title]");
@@ -22,8 +23,19 @@ const evidenceTools = document.querySelector("[data-evidence-tools]");
 const evidenceBreakdown = document.querySelector("[data-evidence-breakdown]");
 const evidenceOutput = document.querySelector("[data-evidence-output]");
 const evidenceLink = document.querySelector("[data-evidence-link]");
+const mobileEvidenceDetail = document.querySelector("[data-mobile-evidence-detail]");
+const mobileEvidenceClose = document.querySelector("[data-mobile-evidence-close]");
+const mobileEvidenceTitle = document.querySelector("[data-mobile-evidence-title]");
+const mobileEvidenceType = document.querySelector("[data-mobile-evidence-type]");
+const mobileEvidenceSummary = document.querySelector("[data-mobile-evidence-summary]");
+const mobileEvidenceTools = document.querySelector("[data-mobile-evidence-tools]");
+const mobileEvidenceTimeline = document.querySelector("[data-mobile-evidence-timeline]");
+const mobileEvidenceOutput = document.querySelector("[data-mobile-evidence-output]");
+const mobileEvidenceLink = document.querySelector("[data-mobile-evidence-link]");
 const workflowProjectLinks = document.querySelectorAll("[data-workflow-project]");
 const workflowSection = document.querySelector(".workflow-section");
+const supportsPointerCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+const mobileWorkflowQuery = window.matchMedia("(max-width: 1024px)");
 
 const stihlFeatures = {
   drawer: {
@@ -234,31 +246,54 @@ const evidenceProjects = {
 
 let pinnedPhysicsHotspot = null;
 
+const closeNav = () => {
+  nav?.classList.remove("is-open");
+  navToggle?.classList.remove("is-open");
+  navToggle?.setAttribute("aria-expanded", "false");
+  navToggle?.setAttribute("aria-label", "Open navigation");
+};
+
 navToggle?.addEventListener("click", () => {
-  const isOpen = nav.classList.toggle("is-open");
+  const isOpen = nav?.classList.toggle("is-open");
+  navToggle.classList.toggle("is-open", Boolean(isOpen));
   navToggle.setAttribute("aria-expanded", String(isOpen));
+  navToggle.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
 });
 
 nav?.addEventListener("click", (event) => {
   if (event.target instanceof HTMLAnchorElement) {
-    nav.classList.remove("is-open");
-    navToggle?.setAttribute("aria-expanded", "false");
+    closeNav();
   }
 });
 
-window.addEventListener("pointermove", (event) => {
-  if (!cursorLight) return;
-  cursorLight.style.left = `${event.clientX}px`;
-  cursorLight.style.top = `${event.clientY}px`;
+document.addEventListener("click", (event) => {
+  if (!nav?.classList.contains("is-open") || !(event.target instanceof Node)) return;
+  if (nav.contains(event.target) || navToggle?.contains(event.target)) return;
+
+  closeNav();
 });
 
-workflowSection?.addEventListener("mouseenter", () => {
-  cursorLight?.classList.add("is-workflow-active");
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") closeNav();
 });
 
-workflowSection?.addEventListener("mouseleave", () => {
-  cursorLight?.classList.remove("is-workflow-active");
-});
+if (supportsPointerCursor) {
+  window.addEventListener("pointermove", (event) => {
+    if (!cursorLight) return;
+    cursorLight.style.left = `${event.clientX}px`;
+    cursorLight.style.top = `${event.clientY}px`;
+  });
+
+  workflowSection?.addEventListener("mouseenter", () => {
+    cursorLight?.classList.add("is-workflow-active");
+  });
+
+  workflowSection?.addEventListener("mouseleave", () => {
+    cursorLight?.classList.remove("is-workflow-active");
+  });
+} else {
+  cursorLight?.classList.add("is-disabled");
+}
 
 const showCopyStatus = (message) => {
   if (!copyStatus) return;
@@ -389,13 +424,168 @@ physicsViewButtons.forEach((button) => {
   });
 });
 
-const renderEvidenceProject = (projectKey) => {
+const evidenceStageDetails = {
+  notice: { number: "01", label: "Notice" },
+  map: { number: "02", label: "Map" },
+  build: { number: "03", label: "Build" },
+  integrate: { number: "04", label: "Integrate" }
+};
+
+let activeEvidenceFilter = "all";
+let evidenceSearchTerm = "";
+let mobileEvidenceProjectKey = null;
+
+const getEvidenceProjectRow = (projectKey) => (
+  Array.from(evidenceRows).find((row) => row.dataset.project === projectKey)
+);
+
+const getEvidenceProjectType = (projectKey) => {
+  const projectCell = getEvidenceProjectRow(projectKey)?.querySelector(".evidence-project-cell");
+  if (!projectCell) return "Engineering project";
+
+  const typeLabel = Array.from(projectCell.children).find((child) => (
+    child.tagName === "SPAN"
+      && !child.classList.contains("mobile-project-tags")
+      && !child.classList.contains("mobile-project-action")
+  ));
+
+  return typeLabel?.textContent?.trim() || "Engineering project";
+};
+
+const applyProjectLink = (link, project) => {
+  if (!link || !project) return;
+
+  link.setAttribute("href", project.link);
+  const opensDocument = project.link.toLowerCase().endsWith(".pdf");
+  if (opensDocument) {
+    link.setAttribute("target", "_blank");
+    link.setAttribute("rel", "noopener noreferrer");
+  } else {
+    link.removeAttribute("target");
+    link.removeAttribute("rel");
+  }
+};
+
+const hydrateMobileEvidenceRows = () => {
+  evidenceRows.forEach((row) => {
+    const projectKey = row.dataset.project;
+    const project = evidenceProjects[projectKey];
+    const projectCell = row.querySelector(".evidence-project-cell");
+    if (!project || !projectCell || projectCell.querySelector(".mobile-project-tags")) return;
+
+    projectCell.setAttribute("aria-expanded", "false");
+    projectCell.setAttribute("aria-controls", "mobile-evidence-detail");
+
+    const mobileTags = document.createElement("span");
+    mobileTags.className = "mobile-project-tags";
+    mobileTags.setAttribute("aria-label", "Project tools");
+
+    project.tools.slice(0, 4).forEach((tool) => {
+      const tag = document.createElement("span");
+      tag.textContent = tool;
+      mobileTags.appendChild(tag);
+    });
+
+    if (project.tools.length > 4) {
+      const moreTag = document.createElement("span");
+      moreTag.textContent = `+${project.tools.length - 4} more`;
+      mobileTags.appendChild(moreTag);
+    }
+
+    const mobileAction = document.createElement("span");
+    mobileAction.className = "mobile-project-action";
+    mobileAction.textContent = "Tap to explore workflow";
+
+    projectCell.append(mobileTags, mobileAction);
+  });
+};
+
+const closeMobileEvidenceDetail = () => {
+  mobileEvidenceProjectKey = null;
+
+  if (mobileEvidenceDetail) {
+    mobileEvidenceDetail.hidden = true;
+    mobileEvidenceDetail.classList.remove("is-open");
+  }
+
+  evidenceRows.forEach((row) => {
+    row.classList.remove("is-expanded");
+    row.querySelector(".evidence-project-cell")?.setAttribute("aria-expanded", "false");
+  });
+};
+
+const renderMobileEvidenceProject = (projectKey) => {
   const project = evidenceProjects[projectKey];
-  if (!project || !evidenceProof) return;
+  const projectRow = getEvidenceProjectRow(projectKey);
+  if (!project || !projectRow || !mobileEvidenceDetail) return;
+
+  mobileEvidenceProjectKey = projectKey;
+  projectRow.appendChild(mobileEvidenceDetail);
+
+  if (mobileEvidenceTitle) mobileEvidenceTitle.textContent = project.title;
+  if (mobileEvidenceType) mobileEvidenceType.textContent = getEvidenceProjectType(projectKey);
+  if (mobileEvidenceSummary) mobileEvidenceSummary.textContent = project.summary;
+  if (mobileEvidenceOutput) mobileEvidenceOutput.textContent = project.output;
+  applyProjectLink(mobileEvidenceLink, project);
+
+  if (mobileEvidenceTools) {
+    const toolNodes = project.tools.map((tool) => {
+      const tag = document.createElement("span");
+      tag.textContent = tool;
+      return tag;
+    });
+    mobileEvidenceTools.replaceChildren(...toolNodes);
+  }
+
+  if (mobileEvidenceTimeline) {
+    const stageNodes = Object.entries(evidenceStageDetails).map(([stageKey, detail]) => {
+      const step = document.createElement("section");
+      step.className = "mobile-detail-step";
+
+      const number = document.createElement("span");
+      number.className = "mobile-step-index";
+      number.textContent = detail.number;
+
+      const card = document.createElement("div");
+      card.className = "mobile-step-card";
+
+      const label = document.createElement("span");
+      label.textContent = detail.label;
+
+      const text = document.createElement("p");
+      text.textContent = project.stages[stageKey] || "";
+
+      card.append(label, text);
+      step.append(number, card);
+      return step;
+    });
+
+    mobileEvidenceTimeline.replaceChildren(...stageNodes);
+  }
+
+  mobileEvidenceDetail.hidden = false;
+  mobileEvidenceDetail.classList.add("is-open");
+
+  evidenceRows.forEach((row) => {
+    const isExpanded = row.dataset.project === projectKey;
+    row.classList.toggle("is-expanded", isExpanded);
+    row.querySelector(".evidence-project-cell")?.setAttribute("aria-expanded", String(isExpanded));
+  });
+};
+
+const renderEvidenceProject = (projectKey, options = {}) => {
+  const project = evidenceProjects[projectKey];
+  if (!project) return;
 
   evidenceRows.forEach((row) => {
     row.classList.toggle("is-selected", row.dataset.project === projectKey);
   });
+
+  if (options.openMobile && mobileWorkflowQuery.matches) {
+    renderMobileEvidenceProject(projectKey);
+  }
+
+  if (!evidenceProof) return;
 
   evidenceProof.classList.add("is-updating");
 
@@ -403,17 +593,7 @@ const renderEvidenceProject = (projectKey) => {
     if (evidenceTitle) evidenceTitle.textContent = project.title;
     if (evidenceSummary) evidenceSummary.textContent = project.summary;
     if (evidenceOutput) evidenceOutput.textContent = project.output;
-    if (evidenceLink) {
-      evidenceLink.setAttribute("href", project.link);
-      const opensDocument = project.link.toLowerCase().endsWith(".pdf");
-      if (opensDocument) {
-        evidenceLink.setAttribute("target", "_blank");
-        evidenceLink.setAttribute("rel", "noopener noreferrer");
-      } else {
-        evidenceLink.removeAttribute("target");
-        evidenceLink.removeAttribute("rel");
-      }
-    }
+    applyProjectLink(evidenceLink, project);
 
     if (evidenceTools) {
       evidenceTools.innerHTML = project.tools.map((tool) => `<li>${tool}</li>`).join("");
@@ -439,37 +619,103 @@ const clearEvidenceStage = () => {
   evidenceCells.forEach((cell) => cell.classList.remove("is-stage-active"));
 };
 
+const getEvidenceFilterLabel = (filterKey) => {
+  const activeFilter = Array.from(evidenceFilters).find((button) => button.dataset.evidenceFilter === filterKey);
+  return activeFilter?.textContent?.trim() || filterKey.replace(/-/g, " ");
+};
+
+const normalizeEvidenceText = (text) => String(text || "").toLowerCase().replace(/-/g, " ");
+
+const getEvidenceSearchText = (projectKey, row) => {
+  const project = evidenceProjects[projectKey];
+  if (!project) return normalizeEvidenceText(row?.textContent || "");
+
+  return normalizeEvidenceText([
+    project.title,
+    project.summary,
+    project.output,
+    project.tools.join(" "),
+    Object.values(project.stages).join(" "),
+    row?.dataset.tools || "",
+    row?.textContent || ""
+  ].join(" "));
+};
+
+const rowMatchesEvidenceFilter = (row, filterKey) => {
+  const rowTools = row.dataset.tools || "";
+  return filterKey === "all" || rowTools.split(" ").includes(filterKey);
+};
+
+const updateEvidenceStatus = (visibleCount) => {
+  if (!evidenceStatus) return;
+
+  const filterLabel = getEvidenceFilterLabel(activeEvidenceFilter);
+  const projectLabel = visibleCount === 1 ? "project" : "projects";
+
+  if (evidenceSearchTerm) {
+    const searchLabel = evidenceSearch?.value.trim() || evidenceSearchTerm;
+    evidenceStatus.textContent = activeEvidenceFilter === "all"
+      ? `Showing ${visibleCount} ${projectLabel} matching "${searchLabel}".`
+      : `Showing ${visibleCount} ${projectLabel} matching "${searchLabel}" and ${filterLabel}.`;
+    return;
+  }
+
+  evidenceStatus.textContent = activeEvidenceFilter === "all"
+    ? "Showing all projects across the engineering workflow."
+    : `Highlighting where ${filterLabel} appears in the workflow.`;
+};
+
+const applyEvidenceSearchAndFilter = () => {
+  let visibleCount = 0;
+
+  evidenceRows.forEach((row) => {
+    const projectKey = row.dataset.project;
+    const filterMatches = rowMatchesEvidenceFilter(row, activeEvidenceFilter);
+    const searchMatches = !evidenceSearchTerm || getEvidenceSearchText(projectKey, row).includes(evidenceSearchTerm);
+    const isVisible = filterMatches && searchMatches;
+
+    if (isVisible) visibleCount += 1;
+
+    row.classList.toggle("is-muted", !filterMatches);
+    row.classList.toggle("is-search-hidden", !isVisible);
+
+    if (!isVisible && row.dataset.project === mobileEvidenceProjectKey) {
+      closeMobileEvidenceDetail();
+    }
+  });
+
+  evidenceCells.forEach((cell) => {
+    const cellTools = cell.dataset.tools || "";
+    const cellMatches = activeEvidenceFilter !== "all" && cellTools.split(" ").includes(activeEvidenceFilter);
+    cell.classList.toggle("is-tool-match", cellMatches);
+  });
+
+  updateEvidenceStatus(visibleCount);
+};
+
 const setEvidenceFilter = (filterKey) => {
+  activeEvidenceFilter = filterKey;
   clearEvidenceStage();
 
   evidenceFilters.forEach((button) => {
     button.classList.toggle("is-active", button.dataset.evidenceFilter === filterKey);
   });
 
-  evidenceRows.forEach((row) => {
-    const rowTools = row.dataset.tools || "";
-    const rowMatches = filterKey === "all" || rowTools.split(" ").includes(filterKey);
-    row.classList.toggle("is-muted", !rowMatches);
-  });
-
-  evidenceCells.forEach((cell) => {
-    const cellTools = cell.dataset.tools || "";
-    const cellMatches = filterKey !== "all" && cellTools.split(" ").includes(filterKey);
-    cell.classList.toggle("is-tool-match", cellMatches);
-  });
-
-  if (evidenceStatus) {
-    const activeFilter = Array.from(evidenceFilters).find((button) => button.dataset.evidenceFilter === filterKey);
-    const filterLabel = activeFilter?.textContent?.trim() || filterKey.replace(/-/g, " ");
-    evidenceStatus.textContent = filterKey === "all"
-      ? "Showing all projects across the engineering workflow."
-      : `Highlighting where ${filterLabel} appears in the workflow.`;
-  }
+  applyEvidenceSearchAndFilter();
 };
 
 const setEvidenceStage = (stageKey) => {
+  activeEvidenceFilter = "all";
+  evidenceSearchTerm = "";
+  if (evidenceSearch) evidenceSearch.value = "";
+
   evidenceFilters.forEach((button) => button.classList.toggle("is-active", button.dataset.evidenceFilter === "all"));
-  evidenceRows.forEach((row) => row.classList.remove("is-muted"));
+  evidenceRows.forEach((row) => {
+    row.classList.remove("is-muted");
+    row.classList.remove("is-search-hidden");
+  });
+  closeMobileEvidenceDetail();
+
   evidenceCells.forEach((cell) => {
     cell.classList.remove("is-tool-match");
     cell.classList.toggle("is-stage-active", cell.dataset.stage === stageKey);
@@ -489,21 +735,59 @@ evidenceFilters.forEach((button) => {
   button.addEventListener("click", () => setEvidenceFilter(button.dataset.evidenceFilter || "all"));
 });
 
+evidenceSearch?.addEventListener("input", () => {
+  evidenceSearchTerm = normalizeEvidenceText(evidenceSearch.value.trim());
+  clearEvidenceStage();
+  applyEvidenceSearchAndFilter();
+});
+
 evidenceStageButtons.forEach((button) => {
   button.addEventListener("click", () => setEvidenceStage(button.dataset.evidenceStage));
 });
 
 evidenceRows.forEach((row) => {
-  row.addEventListener("click", () => renderEvidenceProject(row.dataset.project));
+  row.addEventListener("click", () => {
+    const projectKey = row.dataset.project;
+    if (!projectKey) return;
+
+    if (mobileWorkflowQuery.matches && row.classList.contains("is-expanded")) {
+      renderEvidenceProject(projectKey);
+      closeMobileEvidenceDetail();
+      return;
+    }
+
+    renderEvidenceProject(projectKey, { openMobile: mobileWorkflowQuery.matches });
+  });
 });
 
 workflowProjectLinks.forEach((link) => {
   link.addEventListener("click", () => {
     const projectKey = link.dataset.workflowProject;
-    if (projectKey) renderEvidenceProject(projectKey);
+    if (projectKey) renderEvidenceProject(projectKey, { openMobile: mobileWorkflowQuery.matches });
   });
 });
 
+mobileEvidenceDetail?.addEventListener("click", (event) => {
+  event.stopPropagation();
+});
+
+mobileEvidenceClose?.addEventListener("click", (event) => {
+  event.stopPropagation();
+  closeMobileEvidenceDetail();
+});
+
+if (typeof mobileWorkflowQuery.addEventListener === "function") {
+  mobileWorkflowQuery.addEventListener("change", (event) => {
+    if (!event.matches) closeMobileEvidenceDetail();
+  });
+} else if (typeof mobileWorkflowQuery.addListener === "function") {
+  mobileWorkflowQuery.addListener((event) => {
+    if (!event.matches) closeMobileEvidenceDetail();
+  });
+}
+
+hydrateMobileEvidenceRows();
+applyEvidenceSearchAndFilter();
 renderEvidenceProject("ionic");
 
 const revealObserver = new IntersectionObserver(
