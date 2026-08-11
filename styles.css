@@ -435,6 +435,409 @@ p {
   animation: charge 2.6s ease-in-out infinite;
 }
 
+.personal-hero-card {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  overflow: hidden;
+  border: 1px solid rgba(16, 19, 26, 0.1);
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 30% 28%, rgba(189, 211, 90, 0.48), transparent 10.5rem),
+    radial-gradient(circle at 70% 34%, rgba(46, 139, 192, 0.56), transparent 15.5rem),
+    radial-gradient(circle at 46% 67%, rgba(24, 169, 153, 0.28), transparent 14rem),
+    radial-gradient(circle at 53% 89%, rgba(229, 117, 31, 0.26), transparent 10.5rem),
+    linear-gradient(135deg, rgba(7, 13, 18, 0.98), rgba(12, 37, 47, 0.93) 58%, rgba(13, 19, 31, 0.96)),
+    #151922;
+  background-size: 120% 120%, 125% 125%, 115% 115%, 120% 120%, auto, auto;
+  box-shadow: var(--shadow);
+  transform: perspective(1000px) rotateX(4deg) rotateY(-8deg);
+  animation: heroPanelGlowFlow 20s ease-in-out infinite;
+}
+
+.personal-hero-card::before,
+.personal-hero-card::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.personal-hero-card::before {
+  inset: 9%;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 0.72), transparent 72%);
+  transform: perspective(720px) rotateX(58deg);
+  transform-origin: center bottom;
+  animation: heroGridDrift 16s ease-in-out infinite;
+}
+
+.personal-hero-card::after {
+  inset: -18%;
+  z-index: 0;
+  background:
+    conic-gradient(from 130deg at 50% 50%, transparent, rgba(46, 139, 192, 0.2), transparent, rgba(189, 211, 90, 0.18), transparent),
+    radial-gradient(circle at 50% 49%, rgba(238, 248, 247, 0.34), transparent 12.5rem);
+  filter: blur(20px);
+  opacity: 0.68;
+  animation: heroPlasmaDrift 12s ease-in-out infinite;
+}
+
+.plasma-atmosphere,
+.interest-field {
+  position: absolute;
+  inset: 0;
+}
+
+.plasma-atmosphere {
+  z-index: 1;
+  pointer-events: none;
+}
+
+.plasma-atmosphere::before,
+.plasma-atmosphere::after {
+  content: "";
+  position: absolute;
+  width: 56%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(238, 248, 247, 0.42), rgba(189, 211, 90, 0.18), transparent);
+  filter: blur(0.4px) drop-shadow(0 0 14px rgba(46, 139, 192, 0.24));
+  opacity: 0.28;
+  transform-origin: center;
+  animation: energySweep 13s ease-in-out infinite;
+}
+
+.plasma-atmosphere::before {
+  top: 31%;
+  left: -22%;
+  --sweep-angle: -17deg;
+  transform: rotate(var(--sweep-angle));
+}
+
+.plasma-atmosphere::after {
+  right: -22%;
+  bottom: 24%;
+  background: linear-gradient(90deg, transparent, rgba(24, 169, 153, 0.22), rgba(238, 248, 247, 0.36), transparent);
+  --sweep-angle: 18deg;
+  transform: rotate(var(--sweep-angle));
+  animation-delay: 4.8s;
+}
+
+.plasma-orb {
+  position: absolute;
+  width: clamp(10rem, 26vw, 17rem);
+  height: clamp(10rem, 26vw, 17rem);
+  border-radius: 50%;
+  filter: blur(18px);
+  opacity: 0.58;
+  animation: heroGlowBreathe 7.5s ease-in-out infinite;
+}
+
+.orb-one {
+  top: 7%;
+  left: 7%;
+  background: radial-gradient(circle, rgba(189, 211, 90, 0.58), transparent 66%);
+}
+
+.orb-two {
+  top: 17%;
+  right: -8%;
+  background: radial-gradient(circle, rgba(46, 139, 192, 0.66), transparent 68%);
+  animation-delay: 1.2s;
+}
+
+.orb-three {
+  right: 24%;
+  bottom: -12%;
+  background: radial-gradient(circle, rgba(229, 117, 31, 0.32), transparent 68%);
+  animation-delay: 2.1s;
+}
+
+.field-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(238, 248, 247, 0.13);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 32px rgba(46, 139, 192, 0.08),
+    0 0 28px rgba(189, 211, 90, 0.08);
+  transform: translate(-50%, -50%) rotate(-9deg);
+  animation: fieldRingPulse 9s ease-in-out infinite;
+}
+
+.field-ring-one {
+  width: 40%;
+  height: 31%;
+}
+
+.field-ring-two {
+  width: 60%;
+  height: 46%;
+  animation-delay: 1.6s;
+}
+
+.field-ring-three {
+  width: 78%;
+  height: 60%;
+  border-color: rgba(238, 248, 247, 0.08);
+  animation-delay: 3s;
+}
+
+.electric-arc {
+  position: absolute;
+  border: 1px solid transparent;
+  border-top-color: rgba(238, 248, 247, 0.24);
+  border-left-color: rgba(46, 139, 192, 0.16);
+  border-radius: 50%;
+  filter: drop-shadow(0 0 8px rgba(46, 139, 192, 0.26));
+  opacity: 0.38;
+  transform: rotate(var(--arc-angle, 0deg));
+  animation:
+    coronaArcPulse 6.8s ease-in-out infinite,
+    arcTraceDrift 15s ease-in-out infinite;
+}
+
+.arc-one {
+  top: 17%;
+  left: 13%;
+  width: 72%;
+  height: 42%;
+  --arc-angle: -12deg;
+}
+
+.arc-two {
+  right: 9%;
+  bottom: 20%;
+  width: 44%;
+  height: 26%;
+  --arc-angle: 16deg;
+  animation-delay: 1.4s;
+}
+
+.arc-three {
+  bottom: 13%;
+  left: 8%;
+  width: 50%;
+  height: 24%;
+  --arc-angle: -21deg;
+  animation-delay: 2.2s;
+}
+
+.electric-thread {
+  position: absolute;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(238, 248, 247, 0.68), rgba(189, 211, 90, 0.42), transparent);
+  filter: blur(0.35px) drop-shadow(0 0 9px rgba(189, 211, 90, 0.28));
+  opacity: 0.36;
+  animation: threadFlicker 5.8s ease-in-out infinite;
+}
+
+.thread-one {
+  top: 30%;
+  left: 21%;
+  width: 44%;
+  --thread-angle: -16deg;
+  transform: rotate(var(--thread-angle));
+}
+
+.thread-two {
+  top: 55%;
+  right: 13%;
+  width: 34%;
+  --thread-angle: 21deg;
+  transform: rotate(var(--thread-angle));
+  animation-delay: 1.3s;
+}
+
+.thread-three {
+  bottom: 24%;
+  left: 18%;
+  width: 38%;
+  --thread-angle: 11deg;
+  transform: rotate(var(--thread-angle));
+  animation-delay: 2.4s;
+}
+
+.interest-field {
+  z-index: 2;
+  pointer-events: none;
+}
+
+.interest-orbit {
+  position: absolute;
+  inset: 0;
+  transform-origin: 50% 50%;
+  animation: heroIconOrbit 76s linear infinite;
+  will-change: transform;
+}
+
+.vt-anchor,
+.interest-icon {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  color: #07131d;
+  transform: translate(-50%, -50%);
+  filter:
+    drop-shadow(0 1px 0 rgba(238, 248, 247, 0.26))
+    drop-shadow(0 0 12px rgba(238, 248, 247, 0.18));
+}
+
+.vt-anchor {
+  top: 50%;
+  left: 50%;
+  width: clamp(6.4rem, 13.8vw, 8.7rem);
+  aspect-ratio: 21 / 13;
+  color: #07131d;
+  --float-y: -0.16rem;
+  filter:
+    drop-shadow(0 1px 0 rgba(238, 248, 247, 0.26))
+    drop-shadow(0 0 16px rgba(238, 248, 247, 0.18));
+  animation: vtAnchorBreathe 8.4s ease-in-out infinite;
+  will-change: transform;
+}
+
+.vt-anchor::before {
+  content: "";
+  position: absolute;
+  inset: -34%;
+  border: 1px solid rgba(238, 248, 247, 0.12);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(238, 248, 247, 0.16), transparent 68%);
+  opacity: 0.82;
+  animation: vtCorePulse 6.8s ease-in-out infinite;
+}
+
+.vt-anchor svg,
+.interest-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vt-anchor svg {
+  fill: none;
+  stroke: currentColor;
+  shape-rendering: geometricPrecision;
+}
+
+.vt-mark-line {
+  stroke: currentColor;
+  stroke-width: 9.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.interest-icon {
+  width: clamp(2.85rem, 5vw, 3.4rem);
+  aspect-ratio: 1;
+}
+
+.interest-orbit .interest-icon {
+  animation: heroIconCounterOrbit 76s linear infinite;
+  will-change: transform;
+}
+
+.interest-icon svg {
+  fill: none;
+  stroke-width: 4.8;
+  transform-origin: center;
+  animation: iconMicroFloat 6.8s ease-in-out infinite;
+  animation-delay: var(--icon-delay, 0s);
+  will-change: transform;
+}
+
+.interest-cross {
+  top: 14%;
+  left: 50%;
+  --float-y: -0.2rem;
+  --float-x: 0;
+  --icon-delay: 0s;
+}
+
+.interest-pingpong {
+  top: 21%;
+  left: 69%;
+  --float-y: 0.22rem;
+  --float-x: 0.08rem;
+  --icon-delay: 0.5s;
+}
+
+.interest-rocket {
+  top: 39%;
+  left: 82%;
+  --float-y: -0.18rem;
+  --float-x: 0.12rem;
+  --icon-delay: 0.9s;
+}
+
+.interest-plane {
+  top: 61%;
+  left: 81%;
+  --float-y: 0.2rem;
+  --float-x: -0.08rem;
+  --icon-delay: 1.2s;
+}
+
+.interest-soccer {
+  top: 79%;
+  left: 69%;
+  --float-y: -0.22rem;
+  --float-x: 0.08rem;
+  --icon-delay: 1.6s;
+}
+
+.interest-music {
+  top: 79%;
+  left: 31%;
+  --float-y: 0.18rem;
+  --float-x: -0.1rem;
+  --icon-delay: 2s;
+}
+
+.interest-bible {
+  top: 61%;
+  left: 19%;
+  --float-y: -0.2rem;
+  --float-x: 0.08rem;
+  --icon-delay: 2.4s;
+}
+
+.interest-friends {
+  top: 39%;
+  left: 18%;
+  --float-y: 0.2rem;
+  --float-x: -0.08rem;
+  --icon-delay: 2.8s;
+}
+
+.interest-bike {
+  top: 21%;
+  left: 31%;
+  --float-y: -0.18rem;
+  --float-x: -0.12rem;
+  --icon-delay: 3.2s;
+}
+
+.interest-hiking {
+  top: 84%;
+  left: 50%;
+  --float-y: 0.2rem;
+  --float-x: 0;
+  --icon-delay: 3.6s;
+}
+
 .stats-band {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -3714,6 +4117,185 @@ p {
   }
 }
 
+@keyframes heroPanelGlowFlow {
+  0%,
+  100% {
+    background-position:
+      0% 0%,
+      100% 0%,
+      44% 68%,
+      50% 100%,
+      0 0,
+      0 0;
+  }
+  50% {
+    background-position:
+      8% 5%,
+      92% 8%,
+      50% 61%,
+      46% 94%,
+      0 0,
+      0 0;
+  }
+}
+
+@keyframes heroPlasmaDrift {
+  0%,
+  100% {
+    transform: translate3d(-1%, -1%, 0) rotate(0deg);
+    opacity: 0.66;
+  }
+  50% {
+    transform: translate3d(1%, 1.5%, 0) rotate(10deg);
+    opacity: 0.86;
+  }
+}
+
+@keyframes heroGlowBreathe {
+  0%,
+  100% {
+    transform: translate3d(-0.35rem, 0.2rem, 0) scale(0.92);
+    opacity: 0.48;
+  }
+  50% {
+    transform: translate3d(0.35rem, -0.28rem, 0) scale(1.08);
+    opacity: 0.68;
+  }
+}
+
+@keyframes heroGridDrift {
+  0%,
+  100% {
+    transform: perspective(720px) rotateX(58deg) translate3d(-0.2rem, 0, 0);
+    opacity: 0.82;
+  }
+  50% {
+    transform: perspective(720px) rotateX(58deg) translate3d(0.28rem, -0.18rem, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fieldRingPulse {
+  0%,
+  100% {
+    opacity: 0.44;
+    transform: translate(-50%, -50%) rotate(-9deg) scale(0.98);
+  }
+  50% {
+    opacity: 0.72;
+    transform: translate(-50%, -50%) rotate(-7deg) scale(1.015);
+  }
+}
+
+@keyframes coronaArcPulse {
+  0%,
+  100% {
+    opacity: 0.2;
+    filter: drop-shadow(0 0 2px rgba(46, 139, 192, 0.1));
+  }
+  48% {
+    opacity: 0.62;
+    filter: drop-shadow(0 0 10px rgba(189, 211, 90, 0.26));
+  }
+  56% {
+    opacity: 0.34;
+  }
+}
+
+@keyframes arcTraceDrift {
+  0%,
+  100% {
+    transform: rotate(var(--arc-angle, 0deg)) translate3d(-0.18rem, 0, 0) scale(0.99);
+  }
+  50% {
+    transform: rotate(var(--arc-angle, 0deg)) translate3d(0.24rem, -0.16rem, 0) scale(1.015);
+  }
+}
+
+@keyframes energySweep {
+  0%,
+  100% {
+    opacity: 0.12;
+    transform: translateX(-22%) rotate(var(--sweep-angle, 0deg));
+  }
+  45%,
+  58% {
+    opacity: 0.36;
+  }
+  70% {
+    opacity: 0.22;
+    transform: translateX(28%) rotate(var(--sweep-angle, 0deg));
+  }
+}
+
+@keyframes threadFlicker {
+  0%,
+  100% {
+    opacity: 0.24;
+    transform: translateX(-0.35rem) rotate(var(--thread-angle, 0deg));
+  }
+  45% {
+    opacity: 0.72;
+  }
+  58% {
+    opacity: 0.38;
+  }
+  70% {
+    opacity: 0.64;
+    transform: translateX(0.35rem) rotate(var(--thread-angle, 0deg));
+  }
+}
+
+@keyframes vtCorePulse {
+  0%,
+  100% {
+    opacity: 0.58;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes heroIconOrbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes heroIconCounterOrbit {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes iconMicroFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(var(--float-x, 0), var(--float-y, -0.18rem), 0) scale(1.025);
+  }
+}
+
+@keyframes vtAnchorBreathe {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+}
+
 @keyframes flow {
   from {
     transform: translateX(-18%);
@@ -5482,6 +6064,15 @@ html[data-theme="dark"] .contact-section .btn.ghost {
   color: white;
 }
 
+html[data-theme="dark"] .personal-hero-card {
+  border-color: rgba(226, 238, 248, 0.14);
+  box-shadow: var(--shadow);
+}
+
+html[data-theme="dark"] .interest-icon {
+  color: #07131d;
+}
+
 @media (max-width: 860px) {
   .theme-toggle {
     justify-content: space-between;
@@ -5507,5 +6098,170 @@ html[data-theme="dark"] .contact-section .btn.ghost {
 
   html[data-theme="dark"] .site-nav a:hover {
     border-color: rgba(209, 232, 107, 0.18);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero-visual {
+    min-height: clamp(24rem, 78vw, 28rem);
+  }
+
+  .personal-hero-card {
+    transform: none;
+  }
+
+  .interest-orbit,
+  .interest-orbit .interest-icon {
+    animation-duration: 88s;
+  }
+
+  .field-ring-one {
+    width: 43%;
+    height: 30%;
+  }
+
+  .field-ring-two {
+    width: 63%;
+    height: 45%;
+  }
+
+  .field-ring-three {
+    width: 82%;
+    height: 59%;
+  }
+
+  .interest-icon {
+    width: clamp(2.55rem, 8.5vw, 3.05rem);
+  }
+
+  .vt-anchor {
+    width: clamp(5.5rem, 18vw, 6.8rem);
+  }
+
+  .interest-cross {
+    top: 14%;
+  }
+
+  .interest-pingpong {
+    top: 21%;
+    left: 69%;
+  }
+
+  .interest-rocket {
+    top: 39%;
+    left: 83%;
+  }
+
+  .interest-friends,
+  .interest-bible {
+    left: 19%;
+  }
+
+  .interest-plane {
+    top: 61%;
+    left: 81%;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-visual {
+    min-height: clamp(24rem, 110vw, 29rem);
+  }
+
+  .personal-hero-card::before {
+    inset: 6%;
+    background-size: 24px 24px;
+  }
+
+  .plasma-orb {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  .personal-hero-card {
+    animation-duration: 28s;
+  }
+
+  .interest-orbit,
+  .interest-orbit .interest-icon {
+    animation-duration: 96s;
+  }
+
+  .plasma-atmosphere::before,
+  .plasma-atmosphere::after {
+    opacity: 0.2;
+  }
+
+  .field-ring-one {
+    width: 42%;
+    height: 28%;
+  }
+
+  .field-ring-two {
+    width: 65%;
+    height: 44%;
+  }
+
+  .field-ring-three {
+    width: 86%;
+    height: 60%;
+  }
+
+  .vt-anchor {
+    width: clamp(4.9rem, 25vw, 6rem);
+  }
+
+  .interest-icon {
+    width: clamp(2.22rem, 10.5vw, 2.65rem);
+  }
+
+  .interest-cross {
+    top: 14%;
+    left: 50%;
+  }
+
+  .interest-pingpong {
+    top: 21%;
+    left: 69%;
+  }
+
+  .interest-rocket {
+    top: 39%;
+    left: 83%;
+  }
+
+  .interest-plane {
+    top: 61%;
+    left: 81%;
+  }
+
+  .interest-soccer {
+    top: 79%;
+    left: 69%;
+  }
+
+  .interest-music {
+    top: 79%;
+    left: 31%;
+  }
+
+  .interest-bible {
+    top: 61%;
+    left: 19%;
+  }
+
+  .interest-friends {
+    top: 39%;
+    left: 17%;
+  }
+
+  .interest-bike {
+    top: 21%;
+    left: 31%;
+  }
+
+  .interest-hiking {
+    top: 84%;
+    left: 50%;
   }
 }
