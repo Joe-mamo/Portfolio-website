@@ -27,7 +27,7 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="styles.css?v=20260520-project-additions" />
+  <link rel="stylesheet" href="styles.css?v=20260811-ai-disclosure" />
 </head>
 <body>
   <div class="cursor-light" aria-hidden="true"></div>
@@ -223,11 +223,11 @@
         <p class="eyebrow">Resume Snapshot</p>
         <h2>Engineer with a builder's range.</h2>
       </div>
-      <p>
-        Aerospace engineering at Virginia Tech, with hands-on work in propulsion ideas,
-        product design, CAD modeling, automation, and analysis. This site is built to grow
-        around your resume, project photos, renders, code, and test results.
-      </p>
+      <div class="resume-copy">
+        <p>
+          Virginia Tech Aerospace Engineering student with experience in CAD, MATLAB, prototyping, fabrication, and technical problem-solving across propulsion, wind energy, mechanical design, and software projects. Explore the projects on this site or view my full resume for more about my experience, skills, and education.
+        </p>
+      </div>
       <a class="btn primary" href="Joseph Lilly Resume.pdf" target="_blank" rel="noopener noreferrer">Open Resume</a>
     </section>
 
@@ -1139,6 +1139,26 @@
     </section>
   </main>
 
-  <script src="script.js?v=20260520-project-additions"></script>
+  <footer class="site-footer">
+    <button
+      class="ai-disclosure-trigger"
+      type="button"
+      aria-haspopup="dialog"
+      aria-controls="ai-disclosure-dialog"
+      data-ai-disclosure-open
+    >This website was made almost entirely with AI. Why?</button>
+  </footer>
+
+  <dialog
+    id="ai-disclosure-dialog"
+    class="ai-disclosure-dialog"
+    aria-label="AI disclosure"
+    aria-describedby="ai-disclosure-copy"
+  >
+    <button class="ai-disclosure-close" type="button" aria-label="Close AI disclosure" data-ai-disclosure-close>&times;</button>
+    <p id="ai-disclosure-copy">Hello and thanks for visiting my website! This website was made almost entirely with AI because I wanted to show you all how effective I can be at using it. I know AI is being used more and more in jobs, school and everyday life. I thought a website would be a great way to showcase my understanding of it and its capabilities with what it can accomplish with A LOT of prompting. If you have any more questions, feel free to contact me!</p>
+  </dialog>
+
+  <script src="script.js?v=20260811-ai-disclosure"></script>
 </body>
 </html>

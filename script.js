@@ -36,6 +36,9 @@ const workflowProjectLinks = document.querySelectorAll("[data-workflow-project]"
 const workflowSection = document.querySelector(".workflow-section");
 const themeToggle = document.querySelector("[data-theme-toggle]");
 const themeToggleText = document.querySelector("[data-theme-toggle-text]");
+const aiDisclosureTrigger = document.querySelector("[data-ai-disclosure-open]");
+const aiDisclosureDialog = document.querySelector("#ai-disclosure-dialog");
+const aiDisclosureClose = document.querySelector("[data-ai-disclosure-close]");
 const supportsPointerCursor = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 const mobileWorkflowQuery = window.matchMedia("(max-width: 1024px)");
 const themePreferenceQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -335,6 +338,29 @@ document.addEventListener("click", (event) => {
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeNav();
+});
+
+aiDisclosureTrigger?.addEventListener("click", () => {
+  if (aiDisclosureDialog && !aiDisclosureDialog.open) {
+    aiDisclosureDialog.showModal();
+  }
+});
+
+aiDisclosureClose?.addEventListener("click", () => {
+  aiDisclosureDialog?.close();
+});
+
+aiDisclosureDialog?.addEventListener("click", (event) => {
+  if (event.target !== aiDisclosureDialog) return;
+
+  const dialogBounds = aiDisclosureDialog.getBoundingClientRect();
+  const clickedOutside =
+    event.clientX < dialogBounds.left ||
+    event.clientX > dialogBounds.right ||
+    event.clientY < dialogBounds.top ||
+    event.clientY > dialogBounds.bottom;
+
+  if (clickedOutside) aiDisclosureDialog.close();
 });
 
 if (supportsPointerCursor) {
