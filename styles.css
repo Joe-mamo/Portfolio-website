@@ -84,15 +84,12 @@ a {
 }
 
 .brand-mark {
-  display: grid;
   width: 2.35rem;
   height: 2.35rem;
-  place-items: center;
-  background: var(--vt-maroon);
-  color: white;
+  flex: 0 0 auto;
+  object-fit: contain;
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(134, 31, 65, 0.25);
-  font-family: "Space Grotesk", sans-serif;
 }
 
 .brand-text {
@@ -4676,6 +4673,18 @@ p {
   }
 }
 
+@keyframes draftingLabelPulseTouch {
+  0%,
+  100% {
+    opacity: 0.68;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
+}
+
 @keyframes measuredPulse {
   0%,
   100% {
@@ -4858,6 +4867,14 @@ p {
 @media (hover: none), (pointer: coarse) {
   .cursor-light {
     display: none;
+  }
+}
+
+@media (max-width: 860px) and (hover: none) and (pointer: coarse) {
+  .hess-orthographic-simple .view-label {
+    transform-box: view-box;
+    transform-origin: 0 0;
+    animation-name: draftingLabelPulseTouch;
   }
 }
 
